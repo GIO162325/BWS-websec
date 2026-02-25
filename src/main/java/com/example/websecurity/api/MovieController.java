@@ -31,8 +31,7 @@ public class MovieController {
             Authentication authentication
     ) {
         User user = (User) authentication.getPrincipal();
-        log.info("User {} requested a movie", user.getEmail());
-        log.info("Get movie by id {}", id);
+        log.info("Movie Controller: User {} requested a movie with id {}", user.getEmail(), id);
         MovieResponse movieResponse = movieFacade.getMovieById(id);
         return ResponseEntity.ok(movieResponse);
     }
