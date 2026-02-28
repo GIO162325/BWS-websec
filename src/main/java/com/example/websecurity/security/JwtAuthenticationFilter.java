@@ -42,7 +42,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             final String jwt = authHeader.substring(7);
             final String username = jwtService.extractUsername(jwt);
 
-            // ✅ 2. Only authenticate if not already authenticated
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
@@ -66,7 +65,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         } catch (Exception ex) {
             log.debug("JWT authentication failed: {}", ex.getMessage());
-            // ❗ Do NOT block the request — just continue
         }
 
         filterChain.doFilter(request, response);
