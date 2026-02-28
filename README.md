@@ -53,7 +53,8 @@
 `java -jar target/web-security.jar`
 
 ## Or run the service
-
+1. Place the websec-api.service in /etc/systemd/system \
+2. Run the service \
 `systemctl start websec_api.service`
 
 ## Status and Logs
