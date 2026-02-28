@@ -14,7 +14,7 @@
   mysql:5.6`
 2. `docker exec -it websec-mysql56 mysql -uroot -prootpassword websec`
 3. `use websec;`
-4. Import data \
+4. Import data
   
     
     INSERT INTO user ( 
@@ -52,6 +52,11 @@
 ## Run
 `java -jar target/web-security.jar`
 
-### or
+## Or run the service
 
 `systemctl start websec_api.service`
+
+## Status and Logs
+
+`systemctl start websec_api.service` \
+`journalctl -u websec_api -f`
