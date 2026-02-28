@@ -3,9 +3,9 @@ Description=WebSec Spring Boot API
 After=network.target
 
 [Service]
-User=websec
-WorkingDirectory=/home/websec/executable
-ExecStart=/usr/bin/java -jar /home/websec/executable/web-security.jar
+User=student
+WorkingDirectory=/home/student/executable
+ExecStart=/usr/bin/java -jar /home/student/executable/web-security.jar
 SuccessExitStatus=143
 Restart=on-failure
 RestartSec=5
