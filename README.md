@@ -49,6 +49,14 @@
     (8, 117, 1982, NOW(), NOW(), 'A blade runner must pursue and terminate four replicants who stole a ship in space', 'Ridley Scott', 'Blade Runner'), 
     (8, 148, 2010, NOW(), NOW(), 'Dream within a dream', 'Christopher Nolan', 'Inception'); 
 
+    INSERT INTO review (created, movie_title, rating, review_text, updated, user_id) VALUES
+    ('2026-03-04 10:00:00', 'Inception', 9.0, 'Odlican film sa zanimljivom pricom.', '2026-03-04 10:00:00', 1),
+    ('2026-03-04 10:05:00', 'The Matrix', 8.5, 'Klasik koji vredi pogledati vise puta.', '2026-03-04 10:05:00', 1),
+    
+    ('2026-03-04 10:10:00', 'Interstellar', 9.5, 'Vizuelno impresivan i emotivan film.', '2026-03-04 10:10:00', 2),
+    ('2026-03-04 10:15:00', 'Gladiator', 8.7, 'Sjajna gluma i epska prica.', '2026-03-04 10:15:00', 2),
+    ('2026-03-04 10:20:00', 'The Dark Knight', 9.3, 'Jedan od najboljih superhero filmova.', '2026-03-04 10:20:00', 2);
+
 ## Run
 `java -jar target/web-security.jar`
 
