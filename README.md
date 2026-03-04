@@ -34,6 +34,23 @@
     '$2a$12$u/WmgPhjwQaI4582VG5p3e75fl/FzbOWlaIPQrZDKD685kdEftuAy' 
     ); 
 
+    INSERT INTO user (
+    created,
+    updated,
+    email,
+    first_name,
+    last_name,
+    password
+    )
+    VALUES (
+    NOW(6),
+    NOW(6),
+    'pera@pera.com',
+    'Pera',
+    'Peric',
+    '$2a$12$3npR28geZxZ7SwS6mi20HOGAvezAVJPAzYyU9bwl7wdHYDiw8Voji'
+    );
+
     INSERT INTO movie ( 
     imdb_score, 
     running_time, 
@@ -57,6 +74,8 @@
     ('2026-03-04 10:15:00', 'Gladiator', 8.7, 'Sjajna gluma i epska prica.', '2026-03-04 10:15:00', 2),
     ('2026-03-04 10:20:00', 'The Dark Knight', 9.3, 'Jedan od najboljih superhero filmova.', '2026-03-04 10:20:00', 2);
 
+password for maja@maja: password \
+password for pera@pera: password123 \
 ## Run
 `java -jar target/web-security.jar`
 
