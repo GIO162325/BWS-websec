@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static lombok.AccessLevel.PACKAGE;
 
 @Service
@@ -19,5 +21,13 @@ public class ReviewService {
 
     public Review getReviewById(Long id) {
         return reviewRepository.findById(id).orElseThrow(() -> new WebSecMissingDataException("Review with id " + id + " not found"));
+    }
+
+    public Review updateReview(Review review) {
+        return reviewRepository.save(review);
+    }
+
+    public List<Review> getReviewsByUser(Long userId) {
+        return reviewRepository.findByUserId(userId);
     }
 }
