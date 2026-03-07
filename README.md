@@ -1,21 +1,29 @@
-## Build
+## MySQL
+Make sure MySQL server is running: \
+1. Check if the container is running: `docker ps`
+2. If the container isn't running, check if it exists: `docker ps -a`
+3. If the container exists, start it: `docker start container_id`
+4. If the container doesn't exist run:
+   `docker volume create websec_mysql_data`
+
+   `docker run -d \
+     --name websec-mysql56 \
+     -p 3308:3306 \
+     -e MYSQL_ROOT_PASSWORD=rootpassword \
+     -e MYSQL_DATABASE=websec \
+     -v websec_mysql_data:/var/lib/mysql \
+     mysql:5.6`
+
+## Build websec-api
 `mvn clean package`
 
 `java -jar target/web-security.jar`
 
-## MySQL
-1. Run 
-`docker run -d \
-  --name websec-mysql56 \
-  -p 3308:3306 \
-  -e MYSQL_ROOT_PASSWORD=rootpassword \
-  -e MYSQL_DATABASE=websec \
-  -v websec_mysql_data:/var/lib/mysql \
-  mysql:5.6`
-2. `docker exec -it websec-mysql56 mysql -uroot -prootpassword websec`
-3. `use websec;`
-4. Import data
-  
+## Import data
+1. `docker exec -it websec-mysql56 mysql -uroot -prootpassword websec`
+2. `use websec;`
+3. Import data
+
     
     INSERT INTO user ( 
     created, 
@@ -52,7 +60,7 @@
 ## Run
 `java -jar target/web-security.jar`
 
-## Or run the service
+## Or run websec-api service
 1. Place the websec-api.service in /etc/systemd/system \
 2. Run the service \
 `systemctl start websec_api.service`
