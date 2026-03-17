@@ -1,7 +1,8 @@
 package com.example.websecurity.security;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +20,9 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-@Slf4j
 public class SecurityConfiguration {
+
+    private static final Logger log = LogManager.getLogger(SecurityConfiguration.class);
 
     private final JwtAuthenticationFilter jwtAuthFilter;
 

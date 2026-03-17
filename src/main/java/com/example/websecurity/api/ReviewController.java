@@ -1,6 +1,5 @@
 package com.example.websecurity.api;
 
-import com.example.websecurity.api.dto.MovieResponse;
 import com.example.websecurity.api.dto.ReviewResponse;
 import com.example.websecurity.api.dto.UpdateReviewRequest;
 import com.example.websecurity.facade.ReviewFacade;
@@ -8,7 +7,8 @@ import com.example.websecurity.persistence.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +18,10 @@ import java.util.List;
 @RestController
 @RequestMapping()
 @RequiredArgsConstructor
-@Slf4j
 @SecurityRequirement(name = "Bearer Authentication")
 public class ReviewController {
+
+    private static final Logger log = LogManager.getLogger(ReviewController.class);
 
     private final ReviewFacade reviewFacade;
 

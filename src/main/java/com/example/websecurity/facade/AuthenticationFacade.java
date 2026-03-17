@@ -6,7 +6,8 @@ import com.example.websecurity.security.JwtService;
 import com.example.websecurity.service.UserService;
 import javax.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
+
 public class AuthenticationFacade {
+
+    private static final Logger log = LogManager.getLogger(AuthenticationFacade.class);
 
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
