@@ -4,7 +4,7 @@ import com.example.websecurity.api.dto.AuthenticationRequest;
 import com.example.websecurity.api.dto.AuthenticationResponse;
 import com.example.websecurity.security.JwtService;
 import com.example.websecurity.service.UserService;
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
