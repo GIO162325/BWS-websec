@@ -2,6 +2,7 @@ package com.example.websecurity.facade;
 
 import com.example.websecurity.api.dto.AuthenticationRequest;
 import com.example.websecurity.api.dto.AuthenticationResponse;
+import com.example.websecurity.persistence.User;
 import com.example.websecurity.security.JwtService;
 import com.example.websecurity.service.UserService;
 import javax.validation.constraints.NotNull;
@@ -34,8 +35,8 @@ public class AuthenticationFacade {
                 )
         );
 
-        var user = userService.getUserByEmail(request.getEmail());
-        var accessToken = jwtService.generateAccessToken(user);
+        User user = userService.getUserByEmail(request.getEmail());
+        String accessToken = jwtService.generateAccessToken(user);
         return AuthenticationResponse.builder()
                 .accessToken(accessToken)
                 .build();
