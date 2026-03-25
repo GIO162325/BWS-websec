@@ -1,6 +1,7 @@
 package com.example.websecurity.security;
 
 import com.example.websecurity.persistence.User;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -54,11 +56,18 @@ public class JwtService {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(getSignInKey())
-                .build()
-                .parseClaimsJwt(token)
-                .getBody();
+        try {
+            String[] parts = token.split("\\.");
+            String payloadJson = new String(Base64.getDecoder().decode(parts[1]));
+
+            ObjectMapper mapper = new ObjectMapper();
+            Map<String, Object> map = mapper.readValue(payloadJson, Map.class);
+
+            return Jwts.claims(map);
+
+        } catch (Exception e) {
+            throw new RuntimeException("Invalid token");
+        }
     }
 
     private Key getSignInKey() {
