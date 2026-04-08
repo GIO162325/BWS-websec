@@ -57,16 +57,13 @@ public class JwtService {
 
     private Claims extractAllClaims(String token) {
         try {
-            String[] parts = token.split("\\.");
-            String payloadJson = new String(Base64.getDecoder().decode(parts[1]));
-
-            ObjectMapper mapper = new ObjectMapper();
-            Map<String, Object> map = mapper.readValue(payloadJson, Map.class);
-
-            return Jwts.claims(map);
-
+            return Jwts.parserBuilder()
+                    .setSigningKey(getSignInKey())
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
         } catch (Exception e) {
-            throw new RuntimeException("Invalid token");
+            throw new RuntimeException("Invalid or tampered JWT token", e);
         }
     }
 
