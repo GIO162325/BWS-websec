@@ -25,6 +25,7 @@ Make sure MySQL server is running: \
 3. Import data
 
 
+    
     INSERT INTO user ( 
     created, 
     updated, 
